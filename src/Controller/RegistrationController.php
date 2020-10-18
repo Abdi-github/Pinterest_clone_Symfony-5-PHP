@@ -32,10 +32,7 @@ class RegistrationController extends AbstractController
     {
         
         
-//         if ($this->getUser()) {
-//             $this->addFlash('danger', 'You are already logged in');
-//             return $this->redirectToRoute('app_home');
-//         }
+
         
         $user = new User();
        
