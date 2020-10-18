@@ -28,4 +28,8 @@ services:
         tags: ['controller.service_arguments']
 
     # add more service definitions when explicit configuration is needed
+    app.pin.voter:
+        class: App\Security\PinVoter
+        tags:
+            - { name: security.voter }
     # please note that last definitions always *replace* previous ones

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@import "~bootstrap/scss/bootstrap";
+
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+   }
+/*
+.flashMessageBox {
+    padding: 10px; 
+    text-align: center; 
+    font-size: 1.5em;
+    max-width : 70vw;    
+}
+
+.flash-notice { 
+    color: white; 
+    background: blue 
+}
+
+.flash-success { 
+    color: white; 
+    background: green 
+}
+*/
+
+
+
+.vich-image .form-check {
+    @extend .mt-4;
+
+}
+
+.vich-image img {
+    @extend .rounded; 
+    @extend .shadow ; 
+    @extend .img-thumbnail ;
+
+}
+
+.article_pin img:hover {
+    transition: all ease 0.5s;
+    transform: scale(1.1);
+}
+
+
+
+.form {
+    max-height: 100vh;
+}

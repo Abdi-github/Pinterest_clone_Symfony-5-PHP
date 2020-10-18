@@ -1,0 +1,108 @@
+{% extends 'pins/layouts/base.html.twig' %}
+
+{% block body %}
+
+    <div class="row">
+
+                <div class="card mb-5 bg-white shadow mx-auto">
+                    <article class="article_pin">
+                        <div class="mw-100 overflow-hidden">
+                            <img src="{{ (pin.imageName ? vich_uploader_asset(pin ) : asset('build/images/placeholder.jpg')) | imagine_filter('thumbnail_large') }}" alt="{{ pin.title }}" class="card-img-top" />
+                        </div>
+                        <div class="card-body">
+
+
+                            <h4 class="card-title text-muted">{{ pin.title }}</h4>
+                            <p class="card-text text-muted">{{ pin.description|u.truncate(10, '...', false) }}</p>
+                            <p class="card-text text-muted"><small>Submitted by {{ pin.user.fullName }}  <br>  {{ pin.createdAt|ago }}</small></p>
+
+
+                            <div class="mt-4 d-flex justify-content-between"> 
+                                {% if is_granted('edit', pin) %} 
+                                <a href="{{ path('app_edit', {'id': pin.id }) }}" class="btn btn-outline-primary">Edit Pin</a>
+                                {% endif %} 
+                                
+                                {% if is_granted('edit', pin) %}
+                               
+                                <a href="#" onclick="event.preventDefault();
+                                        confirm('Are you sure to delete the pin?') &&
+                                                document.getElementById('js-pin-delete').submit();" class="btn btn-outline-danger">Delete</a>
+                                {% endif %} 
+                            </div>
+                            <form id="js-pin-delete" action="{{ path('app_delete', {'id': pin.id }) }}" method="post" style="display:none">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token('pin_delete_token' ~ pin.id ) }}">
+                            </form>
+
+                        </div>
+                    </article>
+                </div>
+
+
+
+
+            {# <h1> {{ pin.title }}</h1>
+             <p>
+                 {{ pin.description }}
+             </p>
+ 
+ 
+ 
+ 
+ 
+             <a href="{{ path('pins.edit', {'id': pin.id }) }}">Edit Pin</a>
+ 
+             <a href="#" onclick="event.preventDefault();
+                         confirm('Are you sure to delete the pin?') &&
+                                 document.getElementById('js-pin-delete').submit();">Delete</a>
+ 
+             <form id="js-pin-delete" action="{{ path('pins.delete', {'id': pin.id }) }}" method="post" style="display:none">
+                 <input type="hidden" name="_method" value="DELETE">
+                 <input type="hidden" name="csrf_token" value="{{ csrf_token('pin_delete_token' ~ pin.id ) }}">
+             </form>#}
+        </div>
+    </div>
+
+
+{% endblock %}
+{#<h1>
+    {{ pin.title }}
+</h1>
+<p>
+    {{ pin.description }}
+</p>#}
+
+
+{# 
+The anchor below for delete works only if the method we pass on
+ PinsController delete annotation method is GET
+#}
+
+{#    
+<a href="{{ path('pins.delete', {'id': pin.id }) }}">Delete Pin</a>
+#}   
+
+
+{# 
+To use DELETE method on the PinsController we should change the above 
+ delete anchor to form as below
+#}
+
+{#
+
+<form action="{{ path('pins.delete', {'id': pin.id }) }}" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete">
+
+</form>
+#}
+
+
+
+{#
+The above form for delete works perfectly but there is a problem of style
+as it is a button, so we can modify it by using little js as below
+#}
+
+
+
