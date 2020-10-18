@@ -40,69 +40,11 @@
 
 
 
-
-            {# <h1> {{ pin.title }}</h1>
-             <p>
-                 {{ pin.description }}
-             </p>
- 
- 
- 
- 
- 
-             <a href="{{ path('pins.edit', {'id': pin.id }) }}">Edit Pin</a>
- 
-             <a href="#" onclick="event.preventDefault();
-                         confirm('Are you sure to delete the pin?') &&
-                                 document.getElementById('js-pin-delete').submit();">Delete</a>
- 
-             <form id="js-pin-delete" action="{{ path('pins.delete', {'id': pin.id }) }}" method="post" style="display:none">
-                 <input type="hidden" name="_method" value="DELETE">
-                 <input type="hidden" name="csrf_token" value="{{ csrf_token('pin_delete_token' ~ pin.id ) }}">
-             </form>#}
         </div>
     </div>
 
 
 {% endblock %}
-{#<h1>
-    {{ pin.title }}
-</h1>
-<p>
-    {{ pin.description }}
-</p>#}
-
-
-{# 
-The anchor below for delete works only if the method we pass on
- PinsController delete annotation method is GET
-#}
-
-{#    
-<a href="{{ path('pins.delete', {'id': pin.id }) }}">Delete Pin</a>
-#}   
-
-
-{# 
-To use DELETE method on the PinsController we should change the above 
- delete anchor to form as below
-#}
-
-{#
-
-<form action="{{ path('pins.delete', {'id': pin.id }) }}" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete">
-
-</form>
-#}
-
-
-
-{#
-The above form for delete works perfectly but there is a problem of style
-as it is a button, so we can modify it by using little js as below
-#}
 
 
 

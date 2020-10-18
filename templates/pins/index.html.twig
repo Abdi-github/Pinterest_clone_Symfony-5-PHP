@@ -9,8 +9,7 @@
             {% for pin in pins %}
 
                 <div class="col-sm-6 col-md-4 mx-auto">
-{#                    <div class="card-group mx-auto">
-#}                        <div id="home_card" class="card mb-5">
+                        <div id="home_card" class="card mb-5">
                             <article class="article_pin">
                                 <div class="mw-100 overflow-hidden">
                                     <a href="{{ path('app_show', {'id' : pin.id}) }}"><img src="{{ (pin.imageName ? vich_uploader_asset(pin ) : asset('build/images/placeholder.jpg')) | imagine_filter('thumbnail_medium') }}" alt="{{ pin.title }}" class="card-img-top" /></a>
@@ -25,7 +24,7 @@
 
                                 </div>
                             </article>
-{#                        </div>#}
+
                     </div>
                 </div>
             {% endfor %}
@@ -39,23 +38,3 @@
 
 
 
-{#<div class="row">
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
-</div>#}

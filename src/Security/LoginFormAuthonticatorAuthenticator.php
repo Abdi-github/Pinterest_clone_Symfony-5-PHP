@@ -60,12 +60,7 @@ class LoginFormAuthonticatorAuthenticator extends AbstractFormLoginAuthenticator
         $token = new CsrfToken('authenticate', $credentials['csrf_token']);
         if (!$this->csrfTokenManager->isTokenValid($token)) {
             throw new InvalidCsrfTokenException();
-            /*
-              to add custom token message error we comment out the above exception
-              and modify it as below
-             * 
-             */
-//            throw new CustomUserMessageAuthenticationException('ooops not correct csrf token');
+           
         }
 
         $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $credentials['email']]);
